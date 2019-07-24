@@ -23,9 +23,6 @@ namespace extension_ios_firebase {
 
     //static value getInstanceIDToken();
     //DEFINE_PRIM(getInstanceIDToken, 0);
-	
-	static value getRemoteConfig();
-    DEFINE_PRIM(getRemoteConfig, 0);
 
 }
 

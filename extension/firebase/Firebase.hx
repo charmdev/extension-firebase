@@ -33,7 +33,7 @@ class Firebase {
 	
 	public static function sendAnalyticsEvent (eventName:String, payload:String):Void {
 
-		#if (ios || android)
+		#if android
 			extension_firebase_send_analytics_event(eventName, payload);
 		#else
 			trace("sendAnalyticsEvent not implemented on this platform.");
