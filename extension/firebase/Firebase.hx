@@ -94,12 +94,19 @@ class Firebase {
 		#end
 	}
 	
-	public static function getRemoteConfig(onSuccess:String -> Void):Void {
+	public static function getRemoteConfig(onSuccess:String -> Void, onError:String -> Void = null):Void {
 		//trace("-----------------------> get remote config");
+		if (onError == null)
+		{
+			onError = function(e:String)
+			{
+				trace('default remote config error handler: ${e}');
+			};
+		}
 		#if (android)
-			return extension_firebase_get_remote_config(new RemoteConfigCallback(onSuccess));
+			return extension_firebase_get_remote_config(new RemoteConfigCallback(onSuccess), new RemoteConfigCallback(onError));
 		#else
-			trace("setUserID not implemented on this platform.");
+			trace("getRemoteConfig not implemented on this platform.");
 			return null;
 		#end
 	}
@@ -122,7 +129,7 @@ class Firebase {
 	private static var extension_firebase_get_instance_id_token = JNI.createStaticMethod("org.haxe.extension.Firebase", "getInstanceIDToken", "()Ljava/lang/String;");
 	private static var extension_firebase_set_user_id = JNI.createStaticMethod("org.haxe.extension.Firebase", "setUserID", "(Ljava/lang/String;)V");
 	private static var extension_firebase_set_crashlytics_user_id = JNI.createStaticMethod("org.haxe.extension.Firebase", "setCrashlyticsUserID", "(Ljava/lang/String;)V");
-	private static var extension_firebase_get_remote_config = JNI.createStaticMethod("org.haxe.extension.Firebase", "getRemoteConfig", "(Lorg/haxe/lime/HaxeObject;)V");
+	private static var extension_firebase_get_remote_config = JNI.createStaticMethod("org.haxe.extension.Firebase", "getRemoteConfig", "(Lorg/haxe/lime/HaxeObject;Lorg/haxe/lime/HaxeObject;)V");
 	#end
 	
 	
