@@ -64,8 +64,7 @@ namespace extension_ios_firebase {
     }
  */
  
-	value getRemoteConfig() {
-       NSLog(@"extension_ios_firebase getRemoteConfig");
-       return alloc_string("");
+	void requestRemoteConfig() {
+        [[FirebaseAppDelegate sharedInstance] requestRemoteConfig];
     }
 }

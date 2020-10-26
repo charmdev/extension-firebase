@@ -20,4 +20,26 @@ extern "C" {
         extension_ios_firebase::init();
         return 0; 
     }
+    
+    AutoGCRoot* onRCSuccessHandler = NULL;
+    void getRemoteConfig(value onSuccess)
+    {
+        if (onRCSuccessHandler == NULL)
+        {
+            onRCSuccessHandler = new AutoGCRoot(onSuccess);
+        }
+        //std::cout << "getRemoteConfig ok!\n";
+        extension_ios_firebase::requestRemoteConfig();
+    }
+    DEFINE_PRIM(getRemoteConfig, 1);
+    
+    extern "C" void responseRemoteConfig(const char* config)
+    {
+        //std::cout << config;
+        if (onRCSuccessHandler == NULL)
+        {
+            return;
+        }
+        val_call1(onRCSuccessHandler->get(), alloc_string(config));
+    }
 }

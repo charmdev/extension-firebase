@@ -105,6 +105,8 @@ class Firebase {
 		}
 		#if (android)
 			return extension_firebase_get_remote_config(new RemoteConfigCallback(onSuccess), new RemoteConfigCallback(onError));
+		#elseif (ios)
+			return extension_firebase_get_remote_config(onSuccess);
 		#else
 			trace("getRemoteConfig not implemented on this platform.");
 			return null;
@@ -119,6 +121,7 @@ class Firebase {
 	private static var extension_firebase_get_instance_id_token = Lib.load ("firebase", "getInstanceIDToken", 0);
 	private static var extension_firebase_set_user_id = Lib.load ("firebase", "setUserID", 1);
 	private static var extension_firebase_set_crashlytics_user_id = Lib.load ("firebase", "setCrashlyticsUserID", 1);
+	private static var extension_firebase_get_remote_config = Lib.load ("firebase", "getRemoteConfig", 1);
 	#end
 
 	#if (android)

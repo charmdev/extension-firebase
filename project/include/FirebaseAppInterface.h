@@ -2,10 +2,18 @@
 #define FIREBASE_APP_INTERFACE_H
 
 #include <hx/CFFI.h>
+#include <iostream>
+
 
 
 namespace extension_ios_firebase {
 
+   
+
+    void init();
+
+    void requestRemoteConfig();
+    
     value sendFirebaseAnalyticsEvent(value eventName, value jsonPayload);
     DEFINE_PRIM(sendFirebaseAnalyticsEvent, 2);
     
@@ -26,11 +34,6 @@ namespace extension_ios_firebase {
 
     //static value getInstanceIDToken();
     //DEFINE_PRIM(getInstanceIDToken, 0);
-	
-	value getRemoteConfig();
-    DEFINE_PRIM(getRemoteConfig, 0);
-
-    void init();
 }
 
 #endif
