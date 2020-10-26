@@ -22,11 +22,16 @@ extern "C" {
     }
     
     AutoGCRoot* onRCSuccessHandler = NULL;
-    void getRemoteConfig(value onSuccess)
+    AutoGCRoot* onRCErrorHandler = NULL;
+    void getRemoteConfig(value onSuccess, value onError)
     {
         if (onRCSuccessHandler == NULL)
         {
             onRCSuccessHandler = new AutoGCRoot(onSuccess);
+        }
+        if (onRCErrorHandler == NULL)
+        {
+            onRCErrorHandler = new AutoGCRoot(onError);
         }
         //std::cout << "getRemoteConfig ok!\n";
         extension_ios_firebase::requestRemoteConfig();
@@ -41,5 +46,14 @@ extern "C" {
             return;
         }
         val_call1(onRCSuccessHandler->get(), alloc_string(config));
+    }
+
+    extern "C" void errorRemoteConfig(const char* message)
+    {
+        if (onRCErrorHandler == NULL)
+        {
+            return;
+        }
+        val_call1(onRCErrorHandler->get(), alloc_string(message));
     }
 }

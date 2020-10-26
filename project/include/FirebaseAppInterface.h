@@ -8,8 +8,6 @@
 
 namespace extension_ios_firebase {
 
-   
-
     void init();
 
     void requestRemoteConfig();

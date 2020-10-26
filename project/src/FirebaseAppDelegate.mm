@@ -41,6 +41,7 @@
 @implementation FirebaseAppDelegate
 
 extern "C" void responseRemoteConfig(const char* config);
+extern "C" void errorRemoteConfig(const char* messge);
 
 //NSString *const kGCMMessageIDKey = @"gcm.message_id";
 //NSString* firebaseInstanceIdToken = @"";
@@ -154,6 +155,11 @@ extern "C" void responseRemoteConfig(const char* config);
         } else {
             NSLog(@"Config not fetched");
             NSLog(@"Error %@", error.localizedDescription);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSString *errorMessage = error.localizedDescription;
+                const char* responseChar = [errorMessage cStringUsingEncoding:[NSString defaultCStringEncoding]];
+                errorRemoteConfig(responseChar);
+            });
         }
     }];
 }
