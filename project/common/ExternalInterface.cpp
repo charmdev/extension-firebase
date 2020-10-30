@@ -36,7 +36,7 @@ extern "C" {
         //std::cout << "getRemoteConfig ok!\n";
         extension_ios_firebase::requestRemoteConfig();
     }
-    DEFINE_PRIM(getRemoteConfig, 1);
+    DEFINE_PRIM(getRemoteConfig, 2);
     
     extern "C" void responseRemoteConfig(const char* config)
     {
