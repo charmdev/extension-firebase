@@ -136,17 +136,16 @@ public class Firebase extends Extension {
 		Application mainApp = Extension.mainActivity.getApplication();
 		FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(mainApp);
 
-
 		firebaseAnalytics.setUserId(userID);
 	}
 
 	public static void setCrashlyticsProperty(String propName, String propValue) {
-		Crashlytics.setString(propName, propValue);
+		FirebaseCrashlytics.getInstance().setCustomKey(propName, propValue);
 		Log.d(TAG, "Firebase.java: setCrashlyticsProperty name= " + propName + ", value= " + propValue);
 	}
 
 	public static void setCrashlyticsUserID(String userID) {
-		Crashlytics.setUserIdentifier(userID);
+		FirebaseCrashlytics.getInstance().setUserId(userID);
 		Log.d(TAG, "Firebase.java: setCrashlyticsUserID id= " + userID);
 	}
 
