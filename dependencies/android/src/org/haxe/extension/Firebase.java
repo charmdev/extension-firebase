@@ -162,7 +162,7 @@ public class Firebase extends Extension {
 						if (task.isSuccessful())
 						{
 							Log.d(TAG, "GET REMOTE CONFIG SUCCESS");
-								JSONObject resultJson = new JSONObject();
+							final JSONObject resultJson = new JSONObject();
 							Iterator<Map.Entry<String, FirebaseRemoteConfigValue>> it = mFirebaseRemoteConfig.getAll().entrySet().iterator();
 							try
 							{
@@ -171,18 +171,39 @@ public class Firebase extends Extension {
 									Map.Entry<String, FirebaseRemoteConfigValue> pair = it.next();
 									resultJson.put(pair.getKey(), pair.getValue().asString());
 								}
-								cbSuccess.call1("setResult", resultJson.toString());
+								Extension.sendHaxe(
+									new Runnable() {
+										@Override
+										public void run() {
+											cbSuccess.call1("setResult", resultJson.toString());
+										}
+									}
+								);
 							}
 							catch (JSONException e)
 							{
-								Log.d(TAG, "PARSE REMOTE CONFIG ERROR");
-								cbError.call1("setResult", "PARSE REMOTE CONFIG ERROR");
+								Extension.sendHaxe(
+									new Runnable() {
+										@Override
+										public void run() {
+											Log.d(TAG, "PARSE REMOTE CONFIG ERROR");
+											cbError.call1("setResult", "PARSE REMOTE CONFIG ERROR");
+										}
+									}
+								);
 							}
 						}
 						else
 						{
-							Log.d(TAG, "GET REMOTE CONFIG ERROR");
-                            cbError.call1("setResult", "GET REMOTE CONFIG ERROR");
+							Extension.sendHaxe(
+								new Runnable() {
+									@Override
+									public void run() {
+										Log.d(TAG, "GET REMOTE CONFIG ERROR");
+                            			cbError.call1("setResult", "GET REMOTE CONFIG ERROR");
+									}
+								}
+							);
 						}
 					}
 				});
