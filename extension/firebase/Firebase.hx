@@ -104,12 +104,11 @@ class Firebase {
 			};
 		}
 		#if (android)
-			return extension_firebase_get_remote_config(new RemoteConfigCallback(onSuccess), new RemoteConfigCallback(onError));
+			extension_firebase_get_remote_config(new RemoteConfigCallback(onSuccess), new RemoteConfigCallback(onError));
 		#elseif (ios)
-			return extension_firebase_get_remote_config(onSuccess, onError);
+			extension_firebase_get_remote_config(onSuccess, onError);
 		#else
 			trace("getRemoteConfig not implemented on this platform.");
-			return null;
 		#end
 	}
 
