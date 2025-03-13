@@ -14,7 +14,7 @@
 
 		<compilerflag value="-Iinclude"/>
         <compilerflag value="-I../dependencies/ios/includes"/>
-		<compilerflag value="-F../dependencies/ios/" />
+		<compilerflag value="-F../dependencies/ios/" />
         <compilerflag value="-F../dependencies/ios/Analytics/"/>
         
         <compilerflag value="-F../dependencies/ios/Analytics/FirebaseCore.xcframework/ios-armv7_arm64/" />
@@ -24,6 +24,12 @@
         <compilerflag value="-F../dependencies/ios/Analytics/GoogleUtilities.xcframework/ios-armv7_arm64/" />
         <compilerflag value="-F../dependencies/ios/Analytics/nanopb.xcframework/ios-armv7_arm64/" />
         <compilerflag value="-F../dependencies/ios/Analytics/PromisesObjC.xcframework/ios-armv7_arm64/" />
+
+        <compilerflag value="-F../dependencies/ios/RemoteConfig/FirebaseRemoteConfig.xcframework/ios-armv7_arm64/"/>
+        <compilerflag value="-F../dependencies/ios/RemoteConfig/FirebaseABTesting.xcframework/ios-armv7_arm64/"/>
+
+        <!--
+
         <compilerflag value="-F../dependencies/ios/Analytics/FirebaseCore.xcframework/ios-i386_x86_64-simulator/" />
         <compilerflag value="-F../dependencies/ios/Analytics/FirebaseCoreDiagnostics.xcframework/ios-i386_x86_64-simulator/" />
         <compilerflag value="-F../dependencies/ios/Analytics/FirebaseInstallations.xcframework/ios-i386_x86_64-simulator/" />
@@ -32,16 +38,11 @@
         <compilerflag value="-F../dependencies/ios/Analytics/nanopb.xcframework/ios-i386_x86_64-simulator/" />
         <compilerflag value="-F../dependencies/ios/Analytics/PromisesObjC.xcframework/ios-i386_x86_64-simulator/" />
         
-        <compilerflag value="-F../dependencies/ios/Messaging/FirebaseInstanceID.xcframework/ios-armv7_arm64/" />
-        <compilerflag value="-F../dependencies/ios/Messaging/FirebaseMessaging.xcframework/ios-armv7_arm64/" />
-        <compilerflag value="-F../dependencies/ios/Messaging/Protobuf.xcframework/ios-armv7_arm64/" />
-        <compilerflag value="-F../dependencies/ios/Messaging/FirebaseInstanceID.xcframework/ios-i386_x86_64-simulator/" />
-        <compilerflag value="-F../dependencies/ios/Messaging/FirebaseMessaging.xcframework/ios-i386_x86_64-simulator/" />
-        <compilerflag value="-F../dependencies/ios/Messaging/Protobuf.xcframework/ios-i386_x86_64-simulator/" />
-        
-        <compilerflag value="-F../dependencies/ios/RemoteConfig/FirebaseRemoteConfig.xcframework/ios-armv7_arm64/"/>
-        <compilerflag value="-F../dependencies/ios/RemoteConfig/FirebaseABTesting.xcframework/ios-i386_x86_64-simulator/"/>
         <compilerflag value="-F../dependencies/ios/RemoteConfig/FirebaseRemoteConfig.xcframework/ios-i386_x86_64-simulator/"/>
+        <compilerflag value="-F../dependencies/ios/RemoteConfig/FirebaseABTesting.xcframework/ios-i386_x86_64-simulator/"/>
+
+		-->
+        
 
         <file name="src/FirebaseAppDelegate.mm" />
 		<file name="src/FirebaseAppInterface.mm"/>
